@@ -41,8 +41,7 @@ public class AudioPanel : MonoBehaviour
         if (_toggle.isOn == false)
             _toggle.isOn = true;
 
-        _mixer.audioMixer.SetFloat(_mixerVolumeName, Mathf.Log10(volume) * 20);  // Mathf.Lerp(-80, 0, volume));
-
+        _mixer.audioMixer.SetFloat(_mixerVolumeName, Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat(_mixerVolumeName, volume);
     }
 }
