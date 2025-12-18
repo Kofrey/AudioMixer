@@ -10,9 +10,18 @@ public class AudioSlider : MonoBehaviour
 
     private float _minValue = -80f;
 
-    private void Start() 
+    private void OnEnable()
     {
         _slider.onValueChanged.AddListener(ChangeVolume);
+    }
+
+    private void OnDisable()
+    {
+        _slider.onValueChanged.RemoveListener(ChangeVolume);
+    }
+
+    private void Start() 
+    {
         _slider.value = PlayerPrefs.GetFloat(_mixerVolumeName, 1);
     }
 
