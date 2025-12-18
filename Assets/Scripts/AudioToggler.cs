@@ -9,9 +9,18 @@ public class AudioToggler : MonoBehaviour
 
     private string _voiceEnabledName = "VoiceEnabled";
 
-    private void Start() 
+    private void OnEnable()
     {
         _toggle.onValueChanged.AddListener(ToggleAudio);
+    }
+
+    private void OnDisable()
+    {
+        _toggle.onValueChanged.RemoveListener(ToggleAudio);
+    }
+
+    private void Start() 
+    {
         _toggle.isOn = PlayerPrefs.GetInt(_voiceEnabledName, 1) == 1;
     }
 
